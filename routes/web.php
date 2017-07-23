@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\User;
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('users', function (){
+    $users = User::orderBy('id', 'DESC')->take(5)->get();
+    return $users;
 });
